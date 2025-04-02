@@ -1,0 +1,3 @@
+[submodule ".local/share/omakub/omakub"]
+	path = .local/share/omakub/omakub
+	url = git@github.com:basecamp/omakub.git
