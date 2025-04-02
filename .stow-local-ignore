@@ -1,4 +1,5 @@
 .git
+.gitmodules
 .zsh_history
 .zcompdump
 lazy-lock.json
