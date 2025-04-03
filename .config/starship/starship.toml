@@ -334,7 +334,7 @@ right_format = """$time
 
 add_newline = false
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~     DIRECTORY     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~     DIRECTORY     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 [directory]
 style= "fg:#6A8AEA"
@@ -377,18 +377,20 @@ vimcmd_replace_symbol = "[   ] (bold fg:#a48989)"
 vimcmd_visual_symbol = "[  asdn ](bold fg:#a48989)"
 format = "$symbol"
 disabled = false
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     ...........       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     ...........       ~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
 
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~ GIT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GIT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 [git_branch]
 disabled = false
 symbol = " "
 style = "fg:#b79999"
-truncation_length = 5   # length == ABCDE
-format = '[$symbol$branch(:$remote_branch)]($style) ' # this sets path ../../../../
+# length == ABCDE
+truncation_length = 5
+# this sets path ../../../../
+format = '[$symbol$branch(:$remote_branch)]($style) ' 
 
 [git_commit]
 disabled = false
@@ -417,13 +419,13 @@ renamed = " ${count} "
 modified = " ${count} "
 staged = " ${count} "
 untracked = "󱅘 ${count}"
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     ...........       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     ...........       ~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
 
 
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~     LANGUAGES     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~     LANGUAGES     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 [java]
 disabled = false
 symbol = "•  "
@@ -469,4 +471,4 @@ disabled = false
 symbol = "•  "
 format = '[${symbol}]($style)'
 style = "fg:#a48989"
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     ...........       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     ...........       ~~~~~~~~~~~~~~~~~~~~~~~~ #
