@@ -34,7 +34,7 @@ Banners.small = {
 local buttons = {
   { key = 'f', desc = '  Find File', action = 'Telescope find_files' },
   { key = 'n', desc = '  New File', action = 'ene!' },
-  -- { key = 'p', desc = '  Projects', action = 'Telescope projects' }, -- TODO: Buscar reemplazo a esto
+  { key = 'm', desc = '  Man Pages', action = 'Telescope man_pages' },
   { key = 'r', desc = '  Recent files', action = ':Telescope oldfiles' },
   { key = 't', desc = '  Find Text', action = 'Telescope live_grep' },
   { key = 'c', desc = '  Configuration', action = 'edit ' .. vim.fn.stdpath 'config' .. '/init.lua' },
