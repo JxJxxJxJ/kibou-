@@ -47,13 +47,19 @@ zinit ice wait lucid from"gh-r" as"program" mv"*/bat -> bat" "
 
 zinit light sharkdp/bat
 
-# Completion 
-autoload -U compinit
-# Uses cache 
-compinit -d ~/.zcompdump
+# Plugins
+zinit light sharkdp/bat
 
-# Cargar el plugin después de definir las variables
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
+
+# Autocompletado
+autoload -U compinit
+
+# jj completion (se carga antes de compinit)
+source <(jj util completion zsh)
+
+# Inicializar completado (usa caché)
+compinit -d ~/.zcompdump
 
 # vim:ft=zsh

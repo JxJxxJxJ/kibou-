@@ -72,4 +72,24 @@ vim.keymap.set('x', '<leader>/', function()
   vim.cmd.norm((count > 0 and count or '') .. 'gcc')
 end)
 
+-- Para irme al dashboard y poder volver al archivo anterior
+--
+local original_file = ''
+
+-- Mapeo de líder ; para alternar entre dashboard y archivo original
+vim.api.nvim_set_keymap('n', '<Leader>;', ':lua ToggleDashboard()<CR>', { noremap = true, silent = true })
+
+function ToggleDashboard()
+  -- Si aun nunca fui a un dashboard
+  if original_file == '' then
+    -- Guarda el archivo actual y abre el dashboard
+    original_file = vim.fn.expand '%:p'
+    vim.cmd 'Dashboard'
+  else -- Hay algo en original file, es decir estoy en un dashboard
+    -- Vuelve al archivo original
+    vim.cmd('edit ' .. original_file)
+    original_file = '' -- Y borro para poder usarla de nuevo
+  end
+end
+
 -- vim: ts=2 sts=2 sw=2 et
