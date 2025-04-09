@@ -14,7 +14,7 @@ return {
       finder = 'explorer',
       sort = { fields = { 'sort' } },
       supports_live = true,
-      tree = true,
+      tree = false,
       watch = true,
       diagnostics = true,
       diagnostics_open = false,
@@ -34,9 +34,9 @@ return {
         severity = { pos = 'right' },
       },
       matcher = { sort_empty = false, fuzzy = false },
-      config = function(opts)
-        return require('snacks.picker.source.explorer').setup(opts)
-      end,
+      -- config = function(opts)
+      --   return require('snacks.picker.source.explorer').setup(opts)
+      -- end,
       win = {
         list = {
           keys = {
@@ -72,5 +72,7 @@ return {
         },
       },
     },
+
+    -- Cosas no explorer
   },
 }

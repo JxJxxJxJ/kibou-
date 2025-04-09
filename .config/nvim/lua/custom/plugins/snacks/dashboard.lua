@@ -71,9 +71,10 @@ return {
     },
     {
       section = 'terminal',
-      cmd = 'img2art ~/Descargas/tn8.jpg --threshold 15 --scale .10 --quant 32 --with-color',
+      cmd = 'img2art ~/Descargas/tn8.jpg --threshold 20 --scale .10 --quant 32 --with-color',
+      -- cmd = [[ ascii-image-converter ~/Descargas/tn8.jpg -C -c]],
       ttl = 0,
-      height = 22,
+      height = 23,
       width = 50,
       indent = 18,
       padding = 1,
@@ -89,7 +90,7 @@ return {
           icon = ' ',
           cmd = [[echo -e "$(git-graph --style round --color always --wrap 50 0 8 -f 'oneline')"]],
           indent = 1,
-          height = 30,
+          height = 33,
         },
       }
       return vim.tbl_map(function(cmd)
