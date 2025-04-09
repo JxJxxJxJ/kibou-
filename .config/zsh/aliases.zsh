@@ -57,7 +57,7 @@ alias ff="fzf --preview 'batcat --style=numbers --color=always {}'"
 
 alias cat="bat --color always --theme=$BAT_THEME"
 alias grep='grep --color=auto'
-alias v='lvim'
+alias v='nvim'
 alias mv='mv -v'
 alias cp='cp -vr'
 alias rm='rm -vr'
