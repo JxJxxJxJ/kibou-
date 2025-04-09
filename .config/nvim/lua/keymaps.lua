@@ -52,39 +52,41 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Para comentar usando la API de nvim
-vim.keymap.set('v', '<leader>/', function()
-  local count = vim.v.count
-  vim.cmd.norm((count > 0 and count or '') .. 'gcc')
-end)
-
 vim.keymap.set('n', '<leader>/', function()
   local count = vim.v.count
-  vim.cmd.norm((count > 0 and count or '') .. 'gcc')
-end)
+  vim.cmd('norm ' .. (count > 0 and count or '') .. 'gcc')
+end, { desc = 'Toggle Comment' })
+
+vim.keymap.set('v', '<leader>/', function()
+  local count = vim.v.count
+  vim.cmd('norm ' .. (count > 0 and count or '') .. 'gcc')
+end, { desc = 'Toggle Comment' })
 
 vim.keymap.set('o', '<leader>/', function()
   local count = vim.v.count
   vim.cmd.norm((count > 0 and count or '') .. 'gcc')
-end)
+end, { desc = 'Toggle Comment' })
 
 vim.keymap.set('x', '<leader>/', function()
   local count = vim.v.count
   vim.cmd.norm((count > 0 and count or '') .. 'gcc')
-end)
+end, { desc = 'Toggle Comment' })
+
+-- { '<leader>/', group = 'Toggle Comment', mode = { 'n', 'x', 'v' }
 
 -- Para irme al dashboard y poder volver al archivo anterior
 --
 local original_file = ''
 
 -- Mapeo de líder ; para alternar entre dashboard y archivo original
-vim.api.nvim_set_keymap('n', '<Leader>;', ':lua ToggleDashboard()<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<Leader>;', ':lua ToggleDashboard()<CR>', { noremap = true, silent = true })
 
 function ToggleDashboard()
   -- Si aun nunca fui a un dashboard
   if original_file == '' then
     -- Guarda el archivo actual y abre el dashboard
     original_file = vim.fn.expand '%:p'
-    vim.cmd 'Dashboard'
+    Snacks.dashboard() -- Usar un comando de lua `:lua ... "`
   else -- Hay algo en original file, es decir estoy en un dashboard
     -- Vuelve al archivo original
     vim.cmd('edit ' .. original_file)

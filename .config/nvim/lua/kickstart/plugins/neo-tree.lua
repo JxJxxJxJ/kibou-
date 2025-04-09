@@ -2,6 +2,8 @@
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 
 return {
+  enabled = false,
+
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
   dependencies = {
