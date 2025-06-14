@@ -28,7 +28,13 @@ Scope {
     }
 
     Variants { // For each monitor
-        model: Quickshell.screens
+        model: {
+            const screens = Quickshell.screens;
+            const list = ConfigOptions.bar.screenList;
+            if (!list || list.length === 0)
+                return screens;
+            return screens.filter(screen => list.includes(screen.name));
+        }
 
         PanelWindow { // Bar window
             id: barRoot
@@ -176,9 +182,10 @@ Scope {
                             }
 
                             ActiveWindow {
-                                visible: barRoot.useShortenedForm === 0 && width > 0 && height > 0
+                                visible: barRoot.useShortenedForm === 0
                                 Layout.rightMargin: Appearance.rounding.screenRounding
                                 Layout.fillWidth: true
+                                Layout.fillHeight: true
                                 bar: barRoot
                             }
                         }
@@ -190,12 +197,10 @@ Scope {
                     anchors.centerIn: parent
                     spacing: ConfigOptions?.bar.borderless ? 4 : 8
 
-                    RowLayout {
+                    BarGroup {
                         id: leftCenterGroup
                         Layout.preferredWidth: barRoot.centerSideModuleWidth
-                        spacing: 4
                         Layout.fillHeight: true
-                        implicitWidth: 350
 
                         Resources {
                             alwaysShowAllResources: barRoot.useShortenedForm === 2
@@ -211,12 +216,15 @@ Scope {
 
                     VerticalBarSeparator {visible: ConfigOptions?.bar.borderless}
 
-                    RowLayout {
+                    BarGroup {
                         id: middleCenterGroup
+                        padding: workspacesWidget.widgetPadding
                         Layout.fillHeight: true
-
+                        
                         Workspaces {
+                            id: workspacesWidget
                             bar: barRoot
+                            Layout.fillHeight: true
                             MouseArea { // Right-click to toggle overview
                                 anchors.fill: parent
                                 acceptedButtons: Qt.RightButton
@@ -228,25 +236,23 @@ Scope {
                                 }
                             }
                         }
-
                     }
 
                     VerticalBarSeparator {visible: ConfigOptions?.bar.borderless}
 
-                    RowLayout {
+                    BarGroup {
                         id: rightCenterGroup
-                        Layout.preferredWidth: leftCenterGroup.width
+                        Layout.preferredWidth: barRoot.centerSideModuleWidth
                         Layout.fillHeight: true
-                        spacing: 4
-
+                        
                         ClockWidget {
-                            showDate: barRoot.useShortenedForm < 2
+                            showDate: (ConfigOptions.bar.verbose && barRoot.useShortenedForm < 2)
                             Layout.alignment: Qt.AlignVCenter
                             Layout.fillWidth: true
                         }
 
                         UtilButtons {
-                            visible: barRoot.useShortenedForm === 0
+                            visible: (ConfigOptions.bar.verbose && barRoot.useShortenedForm === 0)
                             Layout.alignment: Qt.AlignVCenter
                         }
 
@@ -254,7 +260,6 @@ Scope {
                             visible: (barRoot.useShortenedForm < 2 && UPower.displayDevice.isLaptopBattery)
                             Layout.alignment: Qt.AlignVCenter
                         }
-
                     }
 
                 }

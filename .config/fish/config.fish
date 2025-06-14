@@ -12,14 +12,8 @@ if status is-interactive
 end
 
 # INFO: Version 1 (commented out to avoid printing unwanted newline)
-# if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
-#     cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
-# end
-
-# INFO: Version 2 (send terminal sequences without trailing newline)
 if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
-    # Avoid printing trailing newline so prompt starts at the first line
-    head -c -1 ~/.local/state/quickshell/user/generated/terminal/sequences.txt >/dev/tty
+    cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
 end
 
 set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
